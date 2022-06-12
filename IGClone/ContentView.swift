@@ -41,7 +41,10 @@ struct ContentView_Previews: PreviewProvider {
 struct HeaderView: View {
   var body: some View {
     HStack {
-      Image(systemName: "rectangle.inset.filled.and.person.filled")
+      Image("logo")
+        .resizable()
+        .frame(width: 100, height: 48)
+        .aspectRatio(contentMode: .fit)
       
       Spacer()
       
