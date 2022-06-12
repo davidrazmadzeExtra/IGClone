@@ -13,14 +13,18 @@ struct ContentView: View {
     VStack {
       HeaderView()
       
-      HomeStories()
-      
-      Divider()
-      
-      PostView()
-      
-      
-      Spacer()
+      ScrollView(.vertical, showsIndicators: false) {
+        HomeStories()
+        
+        Divider()
+        
+        PostView(content: "post_1", description: "This is the user generated description.")
+        
+        PostView(content: "post_1", description: "This is the user generated description.")
+        
+        PostView(content: "post_1", description: "This is the user generated description.")
+      }
+    
     }
   }
   
@@ -171,17 +175,31 @@ struct PostContent: View {
 }
 
 struct PostView: View {
+  
+  var postName: String
+  var description: String
+  
+  public init(content: String, description: String) {
+    self.postName = content
+    self.description = description
+  }
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       PostHeader()
       
-      PostContent(name: "post_1")
+      PostContent(name: postName)
       
       VStack(alignment: .leading) {
         Text("Liked by Alex Ra and 10 others")
           .font(.footnote)
-        Text("This is the user generated description.")
-          .font(.body)
+        HStack(spacing: 6) {
+          Text("Lee Chin")
+            .fontWeight(.bold)
+          
+          Text(description)
+        }
+        .font(.caption)
         
         HStack {
           HStack(spacing: 8) {
