@@ -13,7 +13,7 @@ struct ContentView: View {
     VStack {
       HeaderView()
       
-      StoryView()
+      HomeStories()
       
       Spacer()
     }
@@ -46,11 +46,14 @@ struct HeaderView: View {
   }
 }
 
+/// Contains a single story: Image with Name
+/// Pass in `image` and `name` as parameters
+/// Used in `HomeStories`
 struct StoryView: View {
   
   // Parameters to pass into `StoryView()`
-  var image = "person_1"
-  var name = "John Smith"
+  var image: String = "person_1"
+  var name: String = "John Smith"
   
   // Private variables
   private var imageSize: CGFloat = 60
@@ -77,4 +80,24 @@ struct StoryView: View {
         .font(.caption)
     }
   }
+}
+
+/// Contains a horizontal scroll view of `StoryView`
+struct HomeStories: View {
+  
+  var body: some View {
+    ScrollView(.horizontal, showsIndicators: false) {
+      HStack(spacing: 16) {
+        StoryView()
+        StoryView()
+        StoryView()
+        StoryView()
+        StoryView()
+        StoryView()
+      }
+      .padding(.horizontal, 8)
+    }
+    .padding(.vertical, 12)
+  }
+  
 }
