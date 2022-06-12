@@ -17,7 +17,8 @@ struct ContentView: View {
       
       Divider()
       
-      PostHeader()
+      PostView()
+      
       
       Spacer()
     }
@@ -135,5 +136,79 @@ struct PostHeader: View {
     }
     .padding(.vertical, 12)
     .padding(.horizontal, 8)
+  }
+}
+
+struct PostContent: View {
+  
+  var name: String
+  
+  public init(name: String) {
+    self.name = name
+  }
+  
+  var body: some View {
+    VStack {
+      Image(name)
+        .resizable()
+        .frame(width: .infinity, height: 400)
+        .aspectRatio(contentMode: .fit)
+      
+      HStack {
+        HStack {
+          Image(systemName: "heart")
+          Image(systemName: "message")
+          Image(systemName: "envelope")
+        }
+        Spacer()
+        
+        Image(systemName: "bookmark")
+      }
+      .padding(.horizontal, 12)
+      .padding(.vertical, 10)
+    }
+  }
+}
+
+struct PostView: View {
+  var body: some View {
+    VStack(alignment: .leading, spacing: 0) {
+      PostHeader()
+      
+      PostContent(name: "post_1")
+      
+      VStack(alignment: .leading) {
+        Text("Liked by Alex Ra and 10 others")
+          .font(.footnote)
+        Text("This is the user generated description.")
+          .font(.body)
+        
+        HStack {
+          HStack(spacing: 8) {
+            Image("person_2")
+              .resizable()
+              .frame(width: 30, height: 30)
+              .cornerRadius(50)
+            
+            Text("Add comment...")
+              .font(.caption)
+              .foregroundColor(.secondary)
+          }
+          
+          Spacer()
+          
+          HStack {
+            Text("😍")
+            Text("😆")
+            Image(systemName: "plus.circle")
+              .foregroundColor(.secondary)
+          }
+        }
+      }
+      .frame(width: .infinity)
+      .padding(.horizontal, 12)
+      
+      
+    }
   }
 }
