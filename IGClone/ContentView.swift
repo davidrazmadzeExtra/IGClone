@@ -15,6 +15,10 @@ struct ContentView: View {
       
       HomeStories()
       
+      Divider()
+      
+      PostHeader()
+      
       Spacer()
     }
   }
@@ -105,4 +109,31 @@ struct HomeStories: View {
     .padding(.vertical, 12)
   }
   
+}
+
+/// Contains Image, Name, and Ellipsis
+struct PostHeader: View {
+  
+  private var imageSize: CGFloat = 40
+  
+  var body: some View {
+    HStack {
+      HStack {
+        Image("person_1")
+          .resizable()
+          .frame(width: imageSize, height: imageSize)
+          .cornerRadius(imageSize)
+        
+        Text("Lee Chin")
+          .font(.caption)
+          .fontWeight(.bold)
+      }
+      
+      Spacer()
+      
+      Image(systemName: "ellipsis")
+    }
+    .padding(.vertical, 12)
+    .padding(.horizontal, 8)
+  }
 }
