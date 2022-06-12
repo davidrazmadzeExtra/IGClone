@@ -25,6 +25,7 @@ struct ContentView: View {
         PostView(content: "post_1", description: "This is the user generated description.")
       }
     
+      TabBarView()
     }
   }
   
@@ -227,6 +228,30 @@ struct PostView: View {
       .padding(.horizontal, 12)
       
       
+    }
+  }
+}
+
+struct TabBarView: View {
+  var body: some View {
+    VStack(spacing: 0) {
+      Divider()
+      HStack {
+        Image(systemName: "house")
+        Spacer()
+        Image(systemName: "magnifyingglass")
+        Spacer()
+        Image(systemName: "display")
+        Spacer()
+        Image(systemName: "bag")
+        Spacer()
+        Image("person_2")
+          .resizable()
+          .frame(width: 22, height: 22)
+          .cornerRadius(50)
+      }
+      .padding(.horizontal, 24)
+      .padding(.top, 12)
     }
   }
 }
