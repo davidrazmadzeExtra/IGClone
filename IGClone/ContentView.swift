@@ -52,13 +52,18 @@ struct HeaderView: View {
 struct StoryView: View {
   
   // Parameters to pass into `StoryView()`
-  var image: String = "person_1"
-  var name: String = "John Smith"
+  var image: String
+  var name: String
   
   // Private variables
   private var imageSize: CGFloat = 60
   private var lineWidth: CGFloat = 2.5
   private var overlayColors: [Color] = [ .blue, .purple, .red, .pink, .yellow, .orange]
+  
+  public init(image: String, name: String) {
+    self.image = image
+    self.name = name
+  }
   
   var body: some View {
     VStack {
@@ -88,12 +93,12 @@ struct HomeStories: View {
   var body: some View {
     ScrollView(.horizontal, showsIndicators: false) {
       HStack(spacing: 16) {
-        StoryView()
-        StoryView()
-        StoryView()
-        StoryView()
-        StoryView()
-        StoryView()
+        StoryView(image: "person_1", name: "Lee Chin")
+        StoryView(image: "person_2", name: "Derek John")
+        StoryView(image: "person_3", name: "Mike Lee")
+        StoryView(image: "person_4", name: "Alex Ra")
+        StoryView(image: "person_5", name: "Joe Smith")
+        StoryView(image: "person_6", name: "Dave East")
       }
       .padding(.horizontal, 8)
     }
